@@ -1,0 +1,258 @@
+[WARN][2018-06-09 15:42:51,287] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 15:42:52,404] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 15:42:52,494] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 15:42:54,774] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local754882060_0001
+java.lang.Exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:17)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:9)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 15:48:33,884] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 15:48:35,003] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 15:48:35,041] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 15:48:37,056] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local1747713461_0001
+java.lang.Exception: java.lang.NumberFormatException: For input string: ""
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.NumberFormatException: For input string: ""
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:601)
+	at java.lang.Long.parseLong(Long.java:631)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:18)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:9)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 15:57:56,315] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[ERROR][2018-06-09 15:57:56,492] [main] [ac.cn.saya.flowsum.FlowSumDriver.main(FlowSumDriver.java:48)]org.apache.hadoop.mapred.FileAlreadyExistsException: Output directory file:/E:/linshi/hadoop/flowSum/output already exists
+[WARN][2018-06-09 16:01:04,535] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:01:05,502] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:01:05,549] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:01:08,039] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 16:03:01,433] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:03:02,268] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:03:02,304] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:03:04,056] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local1770734580_0001
+java.lang.Exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:17)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:9)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 16:05:01,475] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:05:02,425] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:05:02,458] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:05:04,254] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local2046051399_0001
+java.lang.Exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:18)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:9)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 16:07:54,087] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:07:55,052] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:07:55,104] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:07:57,091] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local1015689597_0001
+java.lang.Exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:19)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:10)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 16:08:55,354] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:08:56,280] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:08:56,318] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:08:58,064] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local165226028_0001
+java.lang.Exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:19)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:10)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 16:11:35,701] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:11:36,952] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:11:37,005] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:11:38,820] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local1268990012_0001
+java.lang.Exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:19)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:10)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 16:12:18,120] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:12:18,861] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:12:18,897] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:12:20,779] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local1028654566_0001
+java.lang.Exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:19)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:10)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 16:13:57,415] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:13:58,197] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:13:58,231] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:13:59,694] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local2080780902_0001
+java.lang.Exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:19)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:10)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 16:15:50,955] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:15:52,183] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:15:52,254] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:15:54,391] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local977177353_0001
+java.lang.Exception: java.lang.ArrayIndexOutOfBoundsException: 1
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.ArrayIndexOutOfBoundsException: 1
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:18)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:10)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 16:25:50,538] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:25:51,412] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:25:51,445] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:25:53,902] [Thread-5] [org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:590)]job_local2039610609_0001
+java.lang.Exception: java.lang.NumberFormatException: For input string: ""
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.runTasks(LocalJobRunner.java:492)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job.run(LocalJobRunner.java:552)
+Caused by: java.lang.NumberFormatException: For input string: ""
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Long.parseLong(Long.java:601)
+	at java.lang.Long.parseLong(Long.java:631)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:21)
+	at ac.cn.saya.flowsum.FlowSumMapper.map(FlowSumMapper.java:10)
+	at org.apache.hadoop.mapreduce.Mapper.run(Mapper.java:146)
+	at org.apache.hadoop.mapred.MapTask.runNewMapper(MapTask.java:794)
+	at org.apache.hadoop.mapred.MapTask.run(MapTask.java:342)
+	at org.apache.hadoop.mapred.LocalJobRunner$Job$MapTaskRunnable.run(LocalJobRunner.java:271)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[WARN][2018-06-09 16:31:55,120] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:31:56,127] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:31:56,191] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:31:57,916] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 16:37:00,372] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:37:01,101] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:37:01,134] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:37:03,039] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 16:37:52,191] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:37:53,033] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:37:53,079] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:37:54,919] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 16:39:33,210] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:39:34,118] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:39:34,152] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:39:36,358] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 16:40:05,918] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:40:06,842] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:40:06,892] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:40:08,792] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 16:43:34,174] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:43:35,049] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:43:35,084] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:43:36,728] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 16:46:08,239] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 16:46:09,172] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 16:46:09,215] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 16:46:10,957] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 17:49:22,073] [main] [org.apache.hadoop.metrics2.impl.MetricsConfig.loadFirst(MetricsConfig.java:134)]Cannot locate configuration: tried hadoop-metrics2-jobtracker.properties,hadoop-metrics2.properties
+[WARN][2018-06-09 17:49:22,955] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadResourcesInternal(JobResourceUploader.java:145)]Hadoop command-line option parsing not performed. Implement the Tool interface and execute your application with ToolRunner to remedy this.
+[WARN][2018-06-09 17:49:22,990] [main] [org.apache.hadoop.mapreduce.JobResourceUploader.uploadJobJar(JobResourceUploader.java:478)]No job jar file set.  User classes may not be found. See Job or Job#setJar(String).
+[WARN][2018-06-09 17:49:24,942] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 17:49:25,348] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 17:49:26,216] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 17:49:26,419] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 17:49:26,901] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
+[WARN][2018-06-09 17:49:27,117] [pool-4-thread-1] [org.apache.hadoop.metrics2.impl.MetricsSystemImpl.init(MetricsSystemImpl.java:151)]JobTracker metrics system already initialized!
