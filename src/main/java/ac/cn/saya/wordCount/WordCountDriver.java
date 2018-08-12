@@ -1,4 +1,4 @@
-package ac.cn.saya;
+package ac.cn.saya.wordCount;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -11,15 +11,16 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class WordCountDriver {
 
     /**
+     * hadoop jar wordcount.jar ac.cn.saya.wordCount.WordCountDriver /wordCount/input/ /wordCount/output
      * 这个类就是mr程序运行时候的主类，本类中组装了一些程序运行时所需要的信息
      * 比如：使用的那个Mapper类，哪个Reducer类 输入和输出数据在哪
-     * @param agrs
+     * @param args
      * @throws Exception
      */
-    public static void main(String[] agrs) throws Exception{
+    public static void main(String[] args) throws Exception{
         //通过Job来封装本次mr相关信息
         Configuration  conf = new Configuration();
-        conf.set("mapreduce.framework.name","local");
+        //conf.set("mapreduce.framework.name","local");
         //conf.set("");
         Job job = Job.getInstance(conf);
 
@@ -30,7 +31,7 @@ public class WordCountDriver {
         job.setMapperClass(WordCountMapper.class);
         job.setReducerClass(WordCountReducer.class);
 
-        //指定本次mr mapper阶段的输出k v 类型
+        //指定本次mapper阶段的输出k v 类型
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
 
@@ -39,8 +40,13 @@ public class WordCountDriver {
         job.setOutputValueClass(IntWritable.class);
 
         //指定本次mr 输入的数据路径 和最终输出存放在什么位置
-        FileInputFormat.setInputPaths(job,"E:\\linshi\\hadoop\\wordCount\\input");
-        FileOutputFormat.setOutputPath(job,new Path("E:\\linshi\\hadoop\\wordCount\\output"));
+        //FileInputFormat.setInputPaths(job,"E:\\linshi\\hadoop\\wordCount\\input");
+        //FileOutputFormat.setOutputPath(job,new Path("E:\\linshi\\hadoop\\wordCount\\output"));
+        //打包后可能会出现错误：
+        // Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
+        // 解决方法zip -d spark_scala_demo.jar META-INF/*.RSA META-INF/*.DSA META-INF/*.SF
+        FileInputFormat.setInputPaths(job, new Path(args[0]));
+        FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         //提交程序，并且监控打印程序情况
         boolean b = job.waitForCompletion(true);

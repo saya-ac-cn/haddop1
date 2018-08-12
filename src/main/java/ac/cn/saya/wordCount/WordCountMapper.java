@@ -1,4 +1,4 @@
-package ac.cn.saya;
+package ac.cn.saya.wordCount;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -29,6 +29,9 @@ import java.io.IOException;
  */
 public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
+    private Text k = new Text();
+    private IntWritable v = new IntWritable(1);//理解为什么是1
+
     /**
      * 这里就是mapper阶段具体的业务逻辑实现方法 该方法的调用取决于读取数据的组件有没有给mr传入数据
      * 如果有的话 每传入一个<k,v>对 该方法就被调用一次
@@ -40,16 +43,22 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritabl
      */
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-       //拿到传入进来的一行内容，把数据类型转换为String
+
+        // 1 获取一行
+        //拿到传入进来的一行内容，把数据类型转换为String
         String line = value.toString();
 
+        // 2 切割
         //将这一行内容按照分隔符进行一行内容的切割，切割成一个单词数组
         String[] words = line.split(" ");
+
+        // 3 输出
         //遍历数组，没出现一个单词 就标记一个数字1，<单词，1>
         for(String word:words){
             //使用mr程序的上下文context，把mapper阶段处理的数据发送出去
             //作为reduce结点的输入数据
-            context.write(new Text(word), new IntWritable(1));
+            k.set(word);
+            context.write(k,v);
         }
 
     }
