@@ -8,16 +8,26 @@ import java.io.IOException;
 
 public class FlowSumMapper extends Mapper<LongWritable,Text,Text,FlowBean> {
     private static final Logger LOGGER = Logger .getLogger(FlowSumMapper.class);
+
     Text k = new Text();
     FlowBean v = new FlowBean();
+
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+        // 1 将一行内容转成string
         String line = value.toString();
+
+        // 2 切分字段
         String [] fields = line.split("\t");
-        //LOGGER.debug("读数组："+fields[1]);
+
+        // 3 取出手机号
         String phoneNum = fields[1];
+
+        // 4 取出上行流量、下行流量
         long upFlow = Long.parseLong(fields[fields.length-3]);
         long downFlow = Long.parseLong(fields[fields.length-2]);
+
+        // 5 写数据
         k.set(phoneNum);
         v.set(upFlow,downFlow);
         context.write(k,v);

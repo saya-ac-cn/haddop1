@@ -1,13 +1,12 @@
-package ac.cn.saya.flowsum;
+package ac.cn.saya.flowsum.sort;
 
-import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class FlowBean implements Writable {
+public class FlowSortBean implements WritableComparable<FlowSortBean> {
 
     private long upFlow;
 
@@ -39,11 +38,10 @@ public class FlowBean implements Writable {
         this.sumFlow = sumFlow;
     }
 
-    // 反序列化时，需要反射调用空参构造函数，所以必须有
-    public FlowBean() {
+    public FlowSortBean() {
     }
 
-    public FlowBean(long upFlow, long downFlow, long sumFlow) {
+    public FlowSortBean(long upFlow, long downFlow, long sumFlow) {
         this.upFlow = upFlow;
         this.downFlow = downFlow;
         this.sumFlow = sumFlow;
@@ -60,11 +58,7 @@ public class FlowBean implements Writable {
         return upFlow +"\t" + downFlow +"\t" + sumFlow ;
     }
 
-    /**
-     * 序列化
-     * @param dataOutput
-     * @throws IOException
-     */
+    //序列化
     @Override
     public void write(DataOutput dataOutput) throws IOException {
         dataOutput.writeLong(upFlow);
@@ -72,11 +66,7 @@ public class FlowBean implements Writable {
         dataOutput.writeLong(sumFlow);
     }
 
-    /**
-     * 反序列化,注意顺序,先序列化的先出来
-     * @param dataInput
-     * @throws IOException
-     */
+    //反序列化,注意顺序,先序列化的先出来
     @Override
     public void readFields(DataInput dataInput) throws IOException {
         this.upFlow = dataInput.readLong();
@@ -84,4 +74,11 @@ public class FlowBean implements Writable {
         this.sumFlow = dataInput.readLong();
     }
 
+
+    //比较大小
+    @Override
+    public int compareTo(FlowSortBean o) {
+        // 倒序排列，从大到小
+        return this.sumFlow > o.sumFlow ? -1:1;
+    }
 }

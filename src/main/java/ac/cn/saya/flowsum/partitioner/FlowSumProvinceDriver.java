@@ -13,7 +13,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
 
-public class FlowSumProvince {
+public class FlowSumProvinceDriver {
 
     public static class FlowSumProvinceMapper  extends Mapper<LongWritable,Text,Text,FlowBean> {
 
@@ -50,17 +50,17 @@ public class FlowSumProvince {
         }
     }
 
-    public static void main(String[] agrs){
+    public static void main(String[] args){
         try
         {
             //通过Job来封装本次mr相关信息
             Configuration conf = new Configuration();
-            conf.set("mapreduce.framework.name","local");
+            //conf.set("mapreduce.framework.name","local");
             //conf.set("");
             Job job = Job.getInstance(conf);
 
             //指定本次mr job jar包运行主类
-            job.setJarByClass(FlowSumProvince.class);
+            job.setJarByClass(FlowSumProvinceDriver.class);
 
             //指定本次mr 所用的mapper reducer类
             job.setMapperClass(FlowSumProvinceMapper.class);
@@ -83,6 +83,9 @@ public class FlowSumProvince {
             //指定本次mr 输入的数据路径 和最终输出存放在什么位置
             FileInputFormat.setInputPaths(job,"E:\\linshi\\hadoop\\flowSum\\input");
             FileOutputFormat.setOutputPath(job,new Path("E:\\linshi\\hadoop\\flowSum\\output"));
+            //FileInputFormat.setInputPaths(job, new Path(args[0]));
+            //FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
 
             //提交程序，并且监控打印程序情况
             boolean b = job.waitForCompletion(true);

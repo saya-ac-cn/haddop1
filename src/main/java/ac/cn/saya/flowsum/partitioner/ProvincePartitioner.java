@@ -21,6 +21,7 @@ public class ProvincePartitioner extends Partitioner<Text,FlowBean> {
     //分区方法
     @Override
     public int getPartition(Text key, FlowBean value, int i) {
+        //获取电话号码的前3位
         Integer code = provinceMap.get(key.toString().substring(0,3));
         if(code != null)
         {
