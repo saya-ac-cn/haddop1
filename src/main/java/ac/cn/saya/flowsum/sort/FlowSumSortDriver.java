@@ -45,6 +45,10 @@ public class FlowSumSortDriver {
         //FileInputFormat.setInputPaths(job,args[0]);
         //Path outPath = new Path(args[1]);
 
+        //设置运行reduceTask的个数
+        job.setNumReduceTasks(5);
+        job.setPartitionerClass(ProvincePartitioner.class);
+
         FileInputFormat.setInputPaths(job,"E:\\linshi\\hadoop\\flowSumSort\\input");
         Path outPath = new Path("E:\\linshi\\hadoop\\flowSumSort\\ouput");
 

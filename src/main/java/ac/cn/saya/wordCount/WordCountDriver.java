@@ -1,10 +1,12 @@
 package ac.cn.saya.wordCount;
 
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.CombineTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
@@ -39,14 +41,35 @@ public class WordCountDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
+        // 对每一个 maptask 的输出局部汇总（Combiner
+        job.setCombinerClass(WordCountCombiner.class);
+        // 等同于原来的reducer
+        //job.setCombinerClass(WordCountReducer.class);
+
+        // 设置InputFormat
+        job.setInputFormatClass(CombineTextInputFormat.class);
+        CombineTextInputFormat.setMaxInputSplitSize(job,4194304);// 4M
+        CombineTextInputFormat.setMinInputSplitSize(job,2097152);// 2M
+
         //指定本次mr 输入的数据路径 和最终输出存放在什么位置
         //FileInputFormat.setInputPaths(job,"E:\\linshi\\hadoop\\wordCount\\input");
         //FileOutputFormat.setOutputPath(job,new Path("E:\\linshi\\hadoop\\wordCount\\output"));
         //打包后可能会出现错误：
         // Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
         // 解决方法zip -d spark_scala_demo.jar META-INF/*.RSA META-INF/*.DSA META-INF/*.SF
-        FileInputFormat.setInputPaths(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+
+        // 指定job的输入、输出文件所在目录
+        //FileInputFormat.setInputPaths(job, new Path(args[0]));
+        //Path outPath = new Path(args[1]);
+
+        FileInputFormat.setInputPaths(job,"E:\\linshi\\hadoop\\wordCount\\input");
+        Path outPath = new Path("E:\\linshi\\hadoop\\wordCount\\output");
+
+        FileSystem fs = FileSystem.get(conf);
+        if (fs.exists(outPath)) {
+            fs.delete(outPath, true);
+        }
+        FileOutputFormat.setOutputPath(job, outPath);
 
         //提交程序，并且监控打印程序情况
         boolean b = job.waitForCompletion(true);
