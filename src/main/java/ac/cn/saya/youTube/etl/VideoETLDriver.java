@@ -83,8 +83,8 @@ public class VideoETLDriver implements Tool {
     public static void main(String[] agrs) throws Exception {
         try
         {
-            String [] arry = {"E:\\linshi\\hadoop\\YouTube\\video\\in\\0.txt","E:\\linshi\\hadoop\\YouTube\\video\\out"};
-            int resultCode = ToolRunner.run( new VideoETLDriver(),arry);
+            //String [] arry = {"E:\\linshi\\hadoop\\YouTube\\video\\in\\0.txt","E:\\linshi\\hadoop\\YouTube\\video\\out"};
+            int resultCode = ToolRunner.run( new VideoETLDriver(),agrs);
             if(resultCode == 0)
             {
                 System.out.println("Success");

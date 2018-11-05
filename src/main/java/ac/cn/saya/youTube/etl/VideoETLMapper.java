@@ -17,8 +17,9 @@ public class VideoETLMapper extends Mapper<Object,Text,NullWritable,Text> {
 
     @Override
     protected void map(Object key, Text value, Context context) throws IOException, InterruptedException {
+       LOGGER.debug("处理前："+value.toString());
        String line = ETLUtil.getETLString(value.toString());
-       LOGGER.debug("执行读："+line);
+       LOGGER.debug("处理后："+line);
        if(line != null)
        {
            result.set(line);
