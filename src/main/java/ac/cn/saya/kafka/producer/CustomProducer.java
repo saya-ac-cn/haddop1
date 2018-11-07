@@ -1,8 +1,11 @@
 package ac.cn.saya.kafka.producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -38,6 +41,12 @@ public class CustomProducer {
         props.put("key.serializer","org.apache.kafka.common.serialization.StringSerializer");
         // value
         props.put("value.serializer","org.apache.kafka.common.serialization.StringSerializer");
+
+        // 为producer注册拦截器
+        List<String> intercepList = new ArrayList<>();
+        intercepList.add("ac.cn.saya.kafka.interceptor.TimeInterceptor");
+        intercepList.add("ac.cn.saya.kafka.interceptor.CountorInterceptor");
+        props.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG,intercepList);
 
         // 2、实例化KafkaProducer
         KafkaProducer<String,String> producer = new KafkaProducer<String, String>(props);
