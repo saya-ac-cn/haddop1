@@ -24,12 +24,20 @@ public class StringDiscern {
      */
     protected static String[] studyDosage(String dosageStr,String templateStr)
     {
+        dosageStr = dosageStr.replaceAll("\\s*", "");
+        dosageStr = dosageStr.replaceAll("\\；", "");
+        dosageStr = dosageStr.replaceAll("\\;", "");
+        dosageStr = dosageStr.replaceAll("\\。", "");
+        templateStr = templateStr.replaceAll("\\s*", "");
+        templateStr = templateStr.replaceAll("\\；", "");
+        templateStr = templateStr.replaceAll("\\;", "");
+        templateStr = templateStr.replaceAll("\\。", "");
         // 存放返回的数据，0：规格；1：天；2：频率
         String[] result = null;
         int dosageIndex = templateStr.indexOf("#{dosage}");// 在模板中得到#{dosage}的位置，在实际的用法用量中得到，每次的剂量
         if(dosageIndex == -1)
         {
-            System.err.println(dosageStr+",用法学习失败。");
+            System.err.println(dosageStr+",获取模板剂量失败。");
             return result;
         }
 
@@ -52,7 +60,7 @@ public class StringDiscern {
         }
         if(dosageBf.length() == 0)
         {
-            System.err.println(dosageStr+",用法学习失败。");
+            System.err.println(dosageStr+",剂量学习失败。");
             return result;
         }
 
@@ -65,7 +73,7 @@ public class StringDiscern {
         int dayIndex = reductionStr.indexOf("#{day}");// 在模板中得到#{dosage}的位置，在实际的用法用量中得到，每次的剂量
         if(dayIndex == -1)
         {
-            System.err.println(dosageStr+",用法学习失败。");
+            System.err.println(dosageStr+",天数位置提取失败。");
             return result;
         }
         StringBuilder dayBf = new StringBuilder();// 获取到的 天 数字
@@ -84,7 +92,7 @@ public class StringDiscern {
         }
         if(dayBf.length() == 0)
         {
-            System.err.println(dosageStr+",用法学习失败。");
+            System.err.println(dosageStr+",天数学习失败。");
             return result;
         }
 
@@ -95,7 +103,7 @@ public class StringDiscern {
         int frequencyIndex = reductionStr.indexOf("#{frequency}");// 在模板中得到#{frequency}的位置，在实际的用法用量中得到频率
         if(frequencyIndex == -1)
         {
-            System.err.println(dosageStr+",用法学习失败。");
+            System.err.println(dosageStr+",频率位置提取失败。");
             return result;
         }
         StringBuilder frequencyBf = new StringBuilder();// 获取到的 频率 数字
@@ -114,7 +122,7 @@ public class StringDiscern {
         }
         if(frequencyBf.length() == 0)
         {
-            System.err.println(dosageStr+",用法学习失败。");
+            System.err.println(dosageStr+",频率学习失败。");
             return result;
         }
         result = new String[3];
@@ -126,7 +134,11 @@ public class StringDiscern {
 
     public static void main(String[] args)
     {
-        studyDosage("口服；1次1.5mg；2日5次；","口服；1次#{dosage}mg；#{day}日#{frequency}次；");
+        String[] result = studyDosage("口服  1次1.5mg  2日5次；","口服；1次#{dosage}mg；#{day}日#{frequency}次；");
+        for(String item : result)
+        {
+            System.out.println(item);
+        }
     }
 
 }

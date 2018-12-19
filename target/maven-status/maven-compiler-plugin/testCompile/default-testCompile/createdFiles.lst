@@ -1,0 +1,5 @@
+ac\cn\saya\hdfs\HDFSUseApi.class
+ac\cn\saya\hdfs\HDFSClient.class
+ac\cn\saya\hdfs\HDFSUseIOStream.class
+ac\cn\saya\hive\HiveJDBC.class
+ac\cn\saya\hive\HiveJDBCUtils.class
