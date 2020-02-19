@@ -4,6 +4,7 @@ package ac.cn.saya.hdfs;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,9 +23,9 @@ public class HDFSUseApi {
         // 1 获取文件系统
         Configuration conf = new Configuration();
         //这里使用HDFS文件系统
-        conf.set("fs.defaultFS","hdfs://masternode:9000");
+        conf.set("fs.defaultFS","hdfs://172.20.1.225:9000");
         //设置副本数
-        conf.set("dfs.replication","2");
+        conf.set("dfs.replication","3");
         //设置客户端身份
         System.setProperty("HADOOP_USER_NAME","saya");
         //获取文件系统
@@ -40,12 +41,10 @@ public class HDFSUseApi {
     @Test
     public void copyFromLocalFile() throws Exception
     {
-        Path src = new Path("C:/Users/Saya/Desktop/test.html");//要上传的文件的位置
-        Path dst = new Path("/serch.html");//放在hdfs的何处
+        Path src = new Path("/Users/liunengkai/project/java/haddop1/src/main/java/ac/cn/saya/flowsum/flow.txt");//要上传的文件的位置
+        Path dst = new Path("/laboratory/hdfs");//放在hdfs的何处
         //上传
         fs.copyFromLocalFile(src,dst);
-        //关闭
-        fs.close();
     }
 
     /**
@@ -62,8 +61,6 @@ public class HDFSUseApi {
         // Path src 指要下载的文件路径
         // Path dst 指将文件下载到的路径
         fs.copyToLocalFile(false,dst,src);
-        //及时关闭
-        fs.close();
     }
 
     /**
@@ -90,8 +87,6 @@ public class HDFSUseApi {
         Path src = new Path("/serch.html");//要删除的文件或目录
         //删除
         fs.delete(src,true);//第二个参数表示是否递归删除
-        //关闭
-        fs.close();
     }
 
     /**
@@ -105,6 +100,10 @@ public class HDFSUseApi {
         Path newName = new Path("/test.html");//新的文件、目录名字
         //执行重命名
         fs.rename(oldName,newName);
+    }
+
+    @After
+    public void close() throws Exception{
         //关闭
         fs.close();
     }
