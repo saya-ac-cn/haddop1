@@ -6,6 +6,9 @@ import org.apache.hadoop.mapreduce.Partitioner;
 
 import java.util.HashMap;
 
+/**
+ * 自定义分区
+ */
 public class ProvincePartitioner extends Partitioner<Text,FlowBean> {
 
     public static HashMap<String,Integer> provinceMap = new HashMap<>();

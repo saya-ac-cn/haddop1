@@ -20,10 +20,11 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class FilterDriver {
 
-    public static void main(String[] args) throws Exception
-    {
-        args = new String[] { "E:\\linshi\\hadoop\\outputformat\\input", "E:\\linshi\\hadoop\\outputformat\\output" };
+    public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
+        conf.set("fs.defaultFS", "hdfs://172.20.1.225:9000");
+        //设置客户端身份
+        System.setProperty("HADOOP_USER_NAME", "saya");
         Job job = Job.getInstance(conf);
 
         job.setJarByClass(FilterDriver.class);
@@ -42,8 +43,8 @@ public class FilterDriver {
 
         // 虽然我们自定义了 outputformat，但是因为我们的 outputformat 继承自fileoutputformat
         // 而 fileoutputformat 要输出一个_SUCCESS 文件，所以，在这还得指定一个输出目录
-        FileInputFormat.setInputPaths(job, new Path(args[0]));
-        Path outPath = new Path(args[1]);
+        FileInputFormat.setInputPaths(job, new Path("/laboratory/hdfs/log.txt"));
+        Path outPath = new Path("/laboratory/mapreduce/output/result");
         FileSystem fs = FileSystem.get(conf);
         if (fs.exists(outPath)) {
             fs.delete(outPath, true);

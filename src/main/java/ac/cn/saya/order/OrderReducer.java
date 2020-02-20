@@ -19,6 +19,7 @@ public class OrderReducer extends Reducer<OrderBean, NullWritable, OrderBean, Nu
     @Override
     protected void reduce(OrderBean key, Iterable<NullWritable> values, Context context)
             throws IOException, InterruptedException {
+        // 每次只打印第一个key
         context.write(key, NullWritable.get());
     }
 

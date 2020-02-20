@@ -24,6 +24,9 @@ public class FlowSumSortDriver {
     public static void main(String [] args) throws IOException, ClassNotFoundException, InterruptedException {
         // 1 获取配置信息，或者job对象示例
         Configuration configuration = new Configuration();
+        configuration.set("fs.defaultFS", "hdfs://172.20.1.225:9000");
+        //设置客户端身份
+        System.setProperty("HADOOP_USER_NAME", "saya");
         Job job = Job.getInstance(configuration);
 
         // 2 指定本地jar包所在的本地路径
@@ -41,16 +44,13 @@ public class FlowSumSortDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(FlowSortBean.class);
 
-        // 6 指定job的输入、输出文件所在目录
-        //FileInputFormat.setInputPaths(job,args[0]);
-        //Path outPath = new Path(args[1]);
 
         //设置运行reduceTask的个数
-        job.setNumReduceTasks(5);
-        job.setPartitionerClass(ProvincePartitioner.class);
+        //job.setNumReduceTasks(5);
+        //job.setPartitionerClass(ProvincePartitioner.class);
 
-        FileInputFormat.setInputPaths(job,"E:\\linshi\\hadoop\\flowSumSort\\input");
-        Path outPath = new Path("E:\\linshi\\hadoop\\flowSumSort\\ouput");
+        FileInputFormat.setInputPaths(job,"/laboratory/hdfs/phone");
+        Path outPath = new Path("/laboratory/mapreduce/flow/sort");
 
 		FileSystem fs = FileSystem.get(configuration);
 		if (fs.exists(outPath)) {

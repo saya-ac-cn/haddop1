@@ -31,20 +31,18 @@ public class FilterRecordWriter extends RecordWriter<Text, NullWritable> {
 
         // 1 获取文件系统
         FileSystem fs;
-        try
-        {
+        try {
             fs = FileSystem.get(taskAttemptContext.getConfiguration());
 
             // 2 创建输出文件路径
-            Path sayaPath = new Path("E:\\linshi\\hadoop\\outputformat\\output\\saya.log");
-            Path otherPath = new Path("E:\\linshi\\hadoop\\outputformat\\output\\other.log");
+            Path sayaPath = new Path("/laboratory/mapreduce/output/saya.log");
+            Path otherPath = new Path("/laboratory/mapreduce/output/other.log");
 
             // 3 创建输出流
             sayaOut = fs.create(sayaPath);
             otherOut = fs.create(otherPath);
 
-        }catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -52,18 +50,16 @@ public class FilterRecordWriter extends RecordWriter<Text, NullWritable> {
     @Override
     public void write(Text key, NullWritable value) throws IOException, InterruptedException {
         // 分类输出
-        if(key.toString().contains("saya"))
-        {
+        if (key.toString().contains("saya")) {
             sayaOut.write(key.toString().getBytes());
-        }
-        else
-        {
+        } else {
             otherOut.write(key.toString().getBytes());
         }
     }
 
     /**
      * 关闭资源
+     *
      * @param taskAttemptContext
      * @throws IOException
      * @throws InterruptedException

@@ -1,12 +1,13 @@
-package ac.cn.saya.flowsum;
+package ac.cn.saya.flowsum.simple;
 
+import ac.cn.saya.flowsum.FlowBean;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.log4j.Logger;
 import java.io.IOException;
 
-public class FlowSumMapper extends Mapper<LongWritable,Text,Text,FlowBean> {
+public class FlowSumMapper extends Mapper<LongWritable,Text,Text, FlowBean> {
     private static final Logger LOGGER = Logger .getLogger(FlowSumMapper.class);
 
     Text k = new Text();

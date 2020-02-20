@@ -24,6 +24,9 @@ public class OrderDriver {
 
         // 1 获取配置信息
         Configuration conf = new Configuration();
+        conf.set("fs.defaultFS", "hdfs://172.20.1.225:9000");
+        //设置客户端身份
+        System.setProperty("HADOOP_USER_NAME", "saya");
         Job job = Job.getInstance(conf);
 
         // 2 设置 jar 包加载路径
@@ -46,19 +49,15 @@ public class OrderDriver {
         job.setGroupingComparatorClass(OrderSortGroupingComparator.class);
 
         // 7 设置分区
-        job.setPartitionerClass(OrderPartitioner.class);
+        //job.setPartitionerClass(OrderPartitioner.class);
 
         // 8 设置 reduce 个数
-        job.setNumReduceTasks(3);
+        //job.setNumReduceTasks(3);
 
         // 9 设置输入数据和输出数据路径
-        // 指定job的输入、输出文件所在目录
-        //FileInputFormat.setInputPaths(job, new Path(args[0]));
-        //Path outPath = new Path(args[1]);
-
-        FileInputFormat.setInputPaths(job,"E:\\linshi\\hadoop\\order\\input");
-        Path outPath = new Path("E:\\linshi\\hadoop\\order\\output");
-
+        FileInputFormat.setInputPaths(job, new Path("/laboratory/hdfs/groupingcomparator.txt"));
+        Path outPath = new Path("/laboratory/mapreduce/order");
+        // 要输出的目录存在，删除之
         FileSystem fs = FileSystem.get(conf);
         if (fs.exists(outPath)) {
             fs.delete(outPath, true);

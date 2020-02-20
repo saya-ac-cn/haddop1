@@ -1,4 +1,4 @@
-package ac.cn.saya.wordCount;
+package ac.cn.saya.wordCount.plus;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -9,16 +9,11 @@ import java.io.IOException;
 
 /**
  * 这里是MapReduce程序，mapper阶段业务逻辑实现的类
- *
  * Mapper<KEYIN, VALUEIN, KEYOUT, VALUEOUT>
- *
  * KEYIN:表示mapper数据输入的时候key的数据类型，在默认的数据读取组件下，叫InputFormat，它的行为是一行一行的读取待处理的数据
  * 读取一行，返回一行给我们的mr程序，这种情况下 keyin就表示每一行的起始偏移量 因此数据类型是Long
- *
  * VALUEIN:表示mapper数据输出的时候value的数据类型，在默认的读取数据组件下 valuein就表示读取的这一行内容 因此数据类型 是String
- *
  * KEYOUT:表示mapper数据输出的时候key的数据类型 在本案例中 输出的是单词 因此数据类型时String
- *
  * VALUEOUT:表示mapper数据输出的时候value的数据类型 在本案例中 输出的key是单词的次数 因此数据类型时 Integer
  *
  * 这里所说的数据类型String Long都是jdk自带的类型 在序列化的时候 效率低下 因此hadoop自己封装了一套数据类型

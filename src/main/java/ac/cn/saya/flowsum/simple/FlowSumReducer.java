@@ -1,11 +1,12 @@
-package ac.cn.saya.flowsum;
+package ac.cn.saya.flowsum.simple;
 
+import ac.cn.saya.flowsum.FlowBean;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
 
-public class FlowSumReducer extends Reducer<Text,FlowBean,Text,FlowBean> {
+public class FlowSumReducer extends Reducer<Text, FlowBean,Text,FlowBean> {
     FlowBean v = new FlowBean();
 
     @Override

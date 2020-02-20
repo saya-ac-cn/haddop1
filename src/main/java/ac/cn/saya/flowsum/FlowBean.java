@@ -73,7 +73,7 @@ public class FlowBean implements Writable {
     }
 
     /**
-     * 反序列化,注意顺序,先序列化的先出来
+     * 反序列化,注意和序列化的顺序保持一致,先序列化的先出来
      * @param dataInput
      * @throws IOException
      */

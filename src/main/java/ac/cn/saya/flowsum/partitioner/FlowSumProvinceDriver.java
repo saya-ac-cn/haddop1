@@ -2,6 +2,7 @@ package ac.cn.saya.flowsum.partitioner;
 
 import ac.cn.saya.flowsum.FlowBean;
 import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -13,50 +14,53 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
 
+/**
+ * 将统计结果按照手机归属地不同省份输出到不同文件
+ */
 public class FlowSumProvinceDriver {
 
-    public static class FlowSumProvinceMapper  extends Mapper<LongWritable,Text,Text,FlowBean> {
+    public static class FlowSumProvinceMapper extends Mapper<LongWritable, Text, Text, FlowBean> {
 
         Text k = new Text();
         FlowBean v = new FlowBean();
+
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String line = value.toString();
-            String [] fields = line.split("\t");
+            String[] fields = line.split("\t");
             //LOGGER.debug("读数组："+fields[1]);
             String phoneNum = fields[1];
-            long upFlow = Long.parseLong(fields[fields.length-3]);
-            long downFlow = Long.parseLong(fields[fields.length-2]);
+            long upFlow = Long.parseLong(fields[fields.length - 3]);
+            long downFlow = Long.parseLong(fields[fields.length - 2]);
             k.set(phoneNum);
-            v.set(upFlow,downFlow);
-            context.write(k,v);
+            v.set(upFlow, downFlow);
+            context.write(k, v);
         }
     }
 
-    public static class FlowSumProvinceReducer extends Reducer<Text,FlowBean,Text,FlowBean> {
+    public static class FlowSumProvinceReducer extends Reducer<Text, FlowBean, Text, FlowBean> {
         FlowBean v = new FlowBean();
 
         @Override
         protected void reduce(Text key, Iterable<FlowBean> values, Context context) throws IOException, InterruptedException {
             long upFlowCount = 0;
             long downFlowCount = 0;
-            for(FlowBean bean : values)
-            {
+            for (FlowBean bean : values) {
                 upFlowCount += bean.getUpFlow();
                 downFlowCount += bean.getDownFlow();
             }
-            v.set(upFlowCount,downFlowCount);
-            context.write(key,v);
+            v.set(upFlowCount, downFlowCount);
+            context.write(key, v);
         }
     }
 
-    public static void main(String[] args){
-        try
-        {
+    public static void main(String[] args) {
+        try {
             //通过Job来封装本次mr相关信息
             Configuration conf = new Configuration();
-            //conf.set("mapreduce.framework.name","local");
-            //conf.set("");
+            conf.set("fs.defaultFS", "hdfs://172.20.1.225:9000");
+            //设置客户端身份
+            System.setProperty("HADOOP_USER_NAME", "saya");
             Job job = Job.getInstance(conf);
 
             //指定本次mr job jar包运行主类
@@ -80,18 +84,21 @@ public class FlowSumProvinceDriver {
             //自定义分区的组件
             job.setPartitionerClass(ProvincePartitioner.class);
 
-            //指定本次mr 输入的数据路径 和最终输出存放在什么位置
-            FileInputFormat.setInputPaths(job,"E:\\linshi\\hadoop\\flowSum\\input");
-            FileOutputFormat.setOutputPath(job,new Path("E:\\linshi\\hadoop\\flowSum\\output"));
-            //FileInputFormat.setInputPaths(job, new Path(args[0]));
-            //FileOutputFormat.setOutputPath(job, new Path(args[1]));
+            // 设置输入和输出路径
+            FileInputFormat.setInputPaths(job, new Path("/laboratory/hdfs/flow.txt"));
+            Path outPath = new Path("/laboratory/mapreduce/flow/partitioner");
+            // 要输出的目录存在，删除之
+            FileSystem fs = FileSystem.get(conf);
+            if (fs.exists(outPath)) {
+                fs.delete(outPath, true);
+            }
+            FileOutputFormat.setOutputPath(job, outPath);
 
 
             //提交程序，并且监控打印程序情况
             boolean b = job.waitForCompletion(true);
-            System.exit(b?0:1);
-        }catch (Exception e)
-        {
+            System.exit(b ? 0 : 1);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

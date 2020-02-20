@@ -19,6 +19,8 @@ public class FlowSumSortReducer extends Reducer<FlowSortBean,Text,Text,FlowSortB
 
     @Override
     protected void reduce(FlowSortBean key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        context.write(values.iterator().next(),key);
+        for (Text text:values) {
+            context.write(text,key);
+        }
     }
 }

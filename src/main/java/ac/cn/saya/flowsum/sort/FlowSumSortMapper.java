@@ -16,7 +16,7 @@ import java.io.IOException;
  * @Description:
  */
 
-public class FlowSumSortMapper extends Mapper<LongWritable,Text,FlowSortBean,Text> {
+public class FlowSumSortMapper extends Mapper<LongWritable, Text, FlowSortBean, Text> {
 
     FlowSortBean k = new FlowSortBean();
     Text v = new Text();
@@ -38,11 +38,11 @@ public class FlowSumSortMapper extends Mapper<LongWritable,Text,FlowSortBean,Tex
         long downFlow = Long.parseLong(fields[2]);
 
         // 封装对象
-        k.set(upFlow,downFlow);
+        k.set(upFlow, downFlow);
         v.set(phoneNum);
 
         // 输出
-        context.write(k,v);
+        context.write(k, v);
 
     }
 }

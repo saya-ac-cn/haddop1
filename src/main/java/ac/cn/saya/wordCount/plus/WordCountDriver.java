@@ -1,4 +1,4 @@
-package ac.cn.saya.wordCount;
+package ac.cn.saya.wordCount.plus;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
