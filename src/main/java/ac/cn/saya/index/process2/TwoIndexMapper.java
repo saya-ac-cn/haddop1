@@ -1,4 +1,4 @@
-package ac.cn.saya.index.index2;
+package ac.cn.saya.index.process2;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -21,8 +21,9 @@ public class TwoIndexMapper extends Mapper<LongWritable, Text, Text, Text> {
     Text v = new Text();
 
     /**
-     * atguigu--a.txt 3
-       atguigu--b.txt 2
+     * 输入的格式：atguigu--a.txt 3
+     * 拟输出的格式：k:atguigu v:a.txt 3
+     *
      * @param key
      * @param value
      * @param context
@@ -40,6 +41,6 @@ public class TwoIndexMapper extends Mapper<LongWritable, Text, Text, Text> {
         k.set(fields[0]);
         v.set(fields[1]);
 
-        context.write(k,v);
+        context.write(k, v);
     }
 }

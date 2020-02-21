@@ -1,4 +1,4 @@
-package ac.cn.saya.index.index1;
+package ac.cn.saya.index.process1;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -16,14 +16,17 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
  * @Author Saya
  * @Date: 2018/8/20 23:13
  * @Description:
+ * 倒排索引（多 job 串联）
  */
 
 public class OneIndexDriver {
 
     public static void main(String[] args) throws Exception {
-        args = new String[] { "E:\\linshi\\hadoop\\index\\index1\\input", "E:\\linshi\\hadoop\\index\\index1\\output" };
 
         Configuration conf = new Configuration();
+        conf.set("fs.defaultFS", "hdfs://172.20.1.225:9000");
+        //设置客户端身份
+        System.setProperty("HADOOP_USER_NAME", "saya");
         Job job = Job.getInstance(conf);
 
         job.setJarByClass(OneIndexDriver.class);
@@ -37,8 +40,9 @@ public class OneIndexDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
-        FileInputFormat.setInputPaths(job, new Path(args[0]));
-        Path outPath = new Path(args[1]);
+        FileInputFormat.setInputPaths(job, new Path("/laboratory/hdfs/index"));
+        Path outPath = new Path("/laboratory/mapreduce/index/process1");
+        // 要输出的目录存在，删除之
         FileSystem fs = FileSystem.get(conf);
         if (fs.exists(outPath)) {
             fs.delete(outPath, true);

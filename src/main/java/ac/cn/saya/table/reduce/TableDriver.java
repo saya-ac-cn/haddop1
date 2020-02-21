@@ -1,4 +1,4 @@
-package ac.cn.saya.tablejoin.reduce;
+package ac.cn.saya.table.reduce;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -21,9 +21,11 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 public class TableDriver {
 
     public static void main(String[] args) throws Exception {
-        args = new String[] { "E:\\linshi\\hadoop\\tablejoin\\input", "E:\\linshi\\hadoop\\tablejoin\\output" };
         // 1 获取配置信息，或者 job 对象实例
         Configuration configuration = new Configuration();
+        configuration.set("fs.defaultFS", "hdfs://172.20.1.225:9000");
+        //设置客户端身份
+        System.setProperty("HADOOP_USER_NAME", "saya");
         Job job = Job.getInstance(configuration);
 
         // 2 指定本程序的 jar 包所在的本地路径
@@ -42,8 +44,9 @@ public class TableDriver {
         job.setOutputValueClass(NullWritable.class);
 
         // 6 指定 job 的输入原始文件所在目录
-        FileInputFormat.setInputPaths(job, new Path(args[0]));
-        Path outPath = new Path(args[1]);
+        FileInputFormat.setInputPaths(job, new Path("/laboratory/hdfs/table"));
+        Path outPath = new Path("/laboratory/mapreduce/table/join");
+        // 要输出的目录存在，删除之
         FileSystem fs = FileSystem.get(configuration);
         if (fs.exists(outPath)) {
             fs.delete(outPath, true);

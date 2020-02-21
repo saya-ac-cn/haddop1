@@ -70,7 +70,7 @@ public class HDFSUseApi {
     @Test
     public void madirs() throws Exception
     {
-        Path src = new Path("/secret");//要创建的目录
+        Path src = new Path("/laboratory/hdfs/topn");//要创建的目录
         //创建目录
         fs.mkdirs(src);
         //关闭
@@ -84,7 +84,7 @@ public class HDFSUseApi {
     @Test
     public void delete() throws Exception
     {
-        Path src = new Path("/serch.html");//要删除的文件或目录
+        Path src = new Path("/laboratory/hdfs/table");//要删除的文件或目录
         //删除
         fs.delete(src,true);//第二个参数表示是否递归删除
     }

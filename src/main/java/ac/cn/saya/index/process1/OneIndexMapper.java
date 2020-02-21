@@ -1,4 +1,4 @@
-package ac.cn.saya.index.index1;
+package ac.cn.saya.index.process1;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -14,11 +14,10 @@ import java.io.IOException;
  * @Description: TODO
  * @Author Saya
  * @Date: 2018/8/20 23:04
- * @Description:
- * 第一次处理
+ * @Description: 第一次处理
  */
 
-public class OneIndexMapper  extends Mapper<LongWritable, Text, Text , IntWritable> {
+public class OneIndexMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
     String name;
     Text k = new Text();
@@ -32,6 +31,14 @@ public class OneIndexMapper  extends Mapper<LongWritable, Text, Text , IntWritab
         name = split.getPath().getName();
     }
 
+    /**
+     * 写出后的格式：atguigu--a.txt 1
+     * @param key
+     * @param value
+     * @param context
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         // 1 获取第一行
@@ -40,8 +47,7 @@ public class OneIndexMapper  extends Mapper<LongWritable, Text, Text , IntWritab
         // 2 切割
         String[] fields = line.split(" ");
 
-        for (String word : fields)
-        {
+        for (String word : fields) {
             // 3 拼接
             k.set(word + "--" + name);
             v.set(1);

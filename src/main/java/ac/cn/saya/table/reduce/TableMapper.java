@@ -1,4 +1,4 @@
-package ac.cn.saya.tablejoin.reduce;
+package ac.cn.saya.table.reduce;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -16,7 +16,7 @@ import java.io.IOException;
  * @Description:
  */
 
-public class TableMapper  extends Mapper<LongWritable, Text, Text, TableBean> {
+public class TableMapper extends Mapper<LongWritable, Text, Text, TableBean> {
 
     TableBean bean = new TableBean();
     Text k = new Text();
@@ -25,9 +25,9 @@ public class TableMapper  extends Mapper<LongWritable, Text, Text, TableBean> {
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 
         // 1 获取输入文件类型
-        FileSplit split = (FileSplit)context.getInputSplit();
-        String name = split.getPath().getName();// 获取文件名
-
+        FileSplit split = (FileSplit) context.getInputSplit();
+        // 获取文件名
+        String name = split.getPath().getName();
         // 2 获取输入数据
         String line = value.toString();
 
@@ -35,10 +35,8 @@ public class TableMapper  extends Mapper<LongWritable, Text, Text, TableBean> {
         String[] fields = line.split("\t");
 
         // 4 不同的文件分别处理
-        if(name.startsWith("order"))
-        {
+        if (name.startsWith("order")) {
             // 处理订单表数据
-
             // 封装bean
             bean.setOrderId(fields[0]);
             bean.setpId(fields[1]);
@@ -47,11 +45,8 @@ public class TableMapper  extends Mapper<LongWritable, Text, Text, TableBean> {
             bean.setFlag("0");
 
             k.set(fields[1]);
-        }
-        else
-        {
+        } else {
             // 产品表处理
-
             // 封装bean
             bean.setpId(fields[0]);
             bean.setPname(fields[1]);

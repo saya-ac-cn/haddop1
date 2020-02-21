@@ -1,4 +1,4 @@
-package ac.cn.saya.tablejoin.reduce;
+package ac.cn.saya.table.reduce;
 
 import org.apache.hadoop.io.Writable;
 

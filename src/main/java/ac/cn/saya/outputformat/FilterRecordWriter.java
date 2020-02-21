@@ -50,7 +50,7 @@ public class FilterRecordWriter extends RecordWriter<Text, NullWritable> {
     @Override
     public void write(Text key, NullWritable value) throws IOException, InterruptedException {
         // 分类输出
-        if (key.toString().contains("saya")) {
+        if ("saya".contains(key.toString())) {
             sayaOut.write(key.toString().getBytes());
         } else {
             otherOut.write(key.toString().getBytes());

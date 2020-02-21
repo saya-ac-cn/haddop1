@@ -1,0 +1,1 @@
+/tmp/hadoop-liunengkai/mapred/local/1582267414091/pd.txt
